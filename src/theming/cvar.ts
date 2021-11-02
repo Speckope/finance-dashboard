@@ -12,4 +12,4 @@ const CSSVariables = {
 };
 
 export const cvar = (key: keyof typeof CSSVariables) =>
-  `--var(${CSSVariables[key]})`;
+  `var(${CSSVariables[key]})`;
