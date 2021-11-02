@@ -1,16 +1,14 @@
 import { ThemeProvider } from 'styled-components';
-import Contents from './areas/Contents';
-import LeftSideBar from './areas/LeftSideBar';
-import RightSideBar from './areas/RightSideBar';
+import MainPage from './pages/MainPage';
+import { GlobalStyles } from './theming/GlobalStyles';
 import { lightTheme } from './theming/themes';
 
 function App() {
   return (
     <ThemeProvider theme={lightTheme}>
+      <GlobalStyles />
       <div className='App'>
-        <LeftSideBar />
-        <Contents />
-        <RightSideBar />
+        <MainPage />
       </div>
     </ThemeProvider>
   );
