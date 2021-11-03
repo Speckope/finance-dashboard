@@ -12,6 +12,7 @@ declare module 'styled-components' {
       secondary: string;
       background: string;
       backgroundVariant: string;
+      cardBackground: string;
     };
 
     fontColors: {

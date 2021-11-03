@@ -6,6 +6,7 @@ export const lightTheme: DefaultTheme = {
     secondary: '#F26C6D',
     background: '#FFFFFF',
     backgroundVariant: '#F5F8FF',
+    cardBackground: '#FEFEFF',
   },
 
   fontColors: {

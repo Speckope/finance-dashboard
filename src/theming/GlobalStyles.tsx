@@ -16,9 +16,11 @@ export const GlobalStyles = styled.createGlobalStyle`
   html {
     --color-primary: ${(props) => props.theme.colors.primary};
     --color-secondary: ${(props) => props.theme.colors.secondary};
+
     --color-background: ${(props) => props.theme.colors.background};
     --color-background-variant: ${(props) =>
       props.theme.colors.backgroundVariant};
+    --card-background: ${(props) => props.theme.colors.cardBackground};
 
     --font-color-primary: ${(props) => props.theme.fontColors.primary};
     --font-color-secondary: ${(props) => props.theme.fontColors.secondary};
