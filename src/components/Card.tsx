@@ -26,7 +26,6 @@ const Wrapper = styled.div`
   transition: 0.3s ease;
 
   &:hover {
-    // TODO Simplify this monstrocity
     box-shadow: 0px 118.074px 94.4595px rgba(41, 72, 152, 0.05),
       0px 76.5297px 55.32px rgba(41, 72, 152, 0.037963),
       0px 45.4805px 30.0871px rgba(41, 72, 152, 0.0303704),

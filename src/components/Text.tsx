@@ -9,12 +9,12 @@ interface TextProps {
   fontWeight?: number | string;
 }
 
+// PASS APPROPRIATE h TAG AS CHILDREN
 const Text: React.FC<TextProps> = ({
   font = 'fontPrimary',
   size = '1.6rem',
   color = 'fontColorPrimary',
   fontWeight = 'normal',
-  // As children, pass appropriate <h> tag and text
   children,
 }) => {
   return (
@@ -35,6 +35,8 @@ const StyledText = styled.div<TextProps>`
     font-size: ${(props) => props.size};
     color: ${(props) => cvar(props.color!)};
     font-weight: ${(props) => props.fontWeight!};
+    // h tags have different default margins. Normalize it.
+    margin: 0;
   }
 `;
 
