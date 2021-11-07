@@ -60,7 +60,6 @@ const Wrapper = styled.div`
   }
 
   svg:hover {
-    scale: 1.1;
     transition: ease 0.3s;
 
     // Animations on g, becaouse one svg didn't work correctly
@@ -73,11 +72,11 @@ const Wrapper = styled.div`
 
   path {
     fill: black;
-    stroke-width: 0.3;
+    stroke-width: 0.2;
     stroke: black;
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
-    animation: dash 2s forwards;
+    animation: dash 3s forwards;
   }
 
   @keyframes dash {
@@ -85,6 +84,8 @@ const Wrapper = styled.div`
       stroke-dashoffset: 1;
       fill-opacity: 0;
     }
+
+    // TODO Go to bolder stroke width in the middle to show drawing!
     to {
       stroke-dashoffset: 0;
       fill-opacity: 1;
