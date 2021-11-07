@@ -1,4 +1,5 @@
 import React, { useLayoutEffect } from 'react';
+import { pathStyle } from 'src/theming/shared-styles/path';
 import styled from 'styled-components';
 import { ReactComponent as CalendarSvg } from '../assets/left-sidebar/calendar-icon.svg';
 import { ReactComponent as CardSvg } from '../assets/left-sidebar/card-icon.svg';
@@ -47,48 +48,26 @@ const Wrapper = styled.div`
   flex-direction: column;
   gap: 4rem;
 
-  svg {
-    transition: ease 0.3s;
-    width: 3rem;
-    height: 3rem;
-  }
-
   // group had opacity on it from Figma, reset it.
   g {
     opacity: 0.4;
     transition: ease 0.15s;
   }
 
-  svg:hover {
+  svg {
     transition: ease 0.3s;
+    width: 3rem;
+    height: 3rem;
 
-    // Animations on g, becaouse one svg didn't work correctly
-    // (doubled lines and opacity was wrong)
-    & g {
-      opacity: 0.8;
-      transition: ease 0.3s;
+    &:hover {
+      // Animations on g, becaouse one svg didn't work correctly
+      // (doubled lines and opacity was wrong)
+      & g {
+        opacity: 0.8;
+        transition: ease 0.3s;
+      }
     }
   }
 
-  path {
-    fill: black;
-    stroke-width: 0.2;
-    stroke: black;
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-    animation: dash 3s forwards;
-  }
-
-  @keyframes dash {
-    from {
-      stroke-dashoffset: 1;
-      fill-opacity: 0;
-    }
-
-    // TODO Go to bolder stroke width in the middle to show drawing!
-    to {
-      stroke-dashoffset: 0;
-      fill-opacity: 1;
-    }
-  }
+  ${pathStyle}
 `;
