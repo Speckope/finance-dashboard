@@ -8,6 +8,7 @@ export const CSSVariables = {
 
   fontColorPrimary: '--font-color-primary',
   fontColorSecondary: '--font-color-secondary',
+  fontColorHeading: '--font-color-heading',
 
   fontPrimary: '--font-primary',
   fontSecondary: '--font-secondary',

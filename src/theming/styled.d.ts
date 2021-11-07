@@ -18,6 +18,7 @@ declare module 'styled-components' {
     fontColors: {
       primary: string;
       secondary: string;
+      headingColor: string;
     };
   }
 }

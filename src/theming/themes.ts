@@ -12,6 +12,7 @@ export const lightTheme: DefaultTheme = {
   fontColors: {
     primary: '#000000',
     secondary: '#B4BAC1',
+    headingColor: '#5D5D68',
   },
 
   fonts: {

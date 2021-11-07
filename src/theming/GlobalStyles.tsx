@@ -14,6 +14,8 @@ export const GlobalStyles = styled.createGlobalStyle`
   }
 
   html {
+    // Can't but variables from CSSVariables as property name
+    // bc of a ts-styled-plugin bug.
     --color-primary: ${(props) => props.theme.colors.primary};
     --color-secondary: ${(props) => props.theme.colors.secondary};
 
@@ -24,6 +26,7 @@ export const GlobalStyles = styled.createGlobalStyle`
 
     --font-color-primary: ${(props) => props.theme.fontColors.primary};
     --font-color-secondary: ${(props) => props.theme.fontColors.secondary};
+    --font-color-heading: ${(props) => props.theme.fontColors.headingColor};
 
     --font-primary: ${(props) => props.theme.fonts.primary};
     --font-secondary: ${(props) => props.theme.fonts.secondary};
