@@ -55,5 +55,10 @@ export default CardsList;
 
 const Wrapper = styled.div`
   display: flex;
+  align-self: center;
   gap: 1rem;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 80rem;
 `;
