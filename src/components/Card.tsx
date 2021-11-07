@@ -10,11 +10,14 @@ const Card: React.FC<CardProps> = ({ children }) => {
 
 const Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: start;
 
   width: 12rem;
   height: 12rem;
+  padding: 1.5rem;
+  gap: 1rem;
 
   background-color: ${cvar('cardBackground')};
   border: 1px solid #ebebeb;
