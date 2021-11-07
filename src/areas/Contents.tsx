@@ -1,28 +1,27 @@
 import React from 'react';
-import Card from 'src/components/Card';
 import styled from 'styled-components';
-import Text from '../components/Text';
 
-import { ReactComponent as BoostersSVG } from '../assets/contents/boosters-icon.svg';
+import Text from '../components/Text';
+import CardsList from 'src/components/CardsList';
+import { cvar } from 'src/theming/cvar';
 
 interface ContentsProps {}
 
 const Contents: React.FC<ContentsProps> = ({}) => {
   return (
-    <StyledContents>
-      <Card>
-        <BoostersSVG />
-        <Text size='1rem'>
-          <h3>Booster</h3>
-        </Text>
-      </Card>
-    </StyledContents>
+    <Wrapper>
+      <Text size='2.5rem' fontWeight='bold' color='fontColorHeading'>
+        <h1>Dashboard</h1>
+      </Text>
+      <CardsList />
+    </Wrapper>
   );
 };
 
-const StyledContents = styled.div`
+const Wrapper = styled.div`
   flex: 1;
-  background-color: blueviolet;
+
+  background-color: ${cvar('colorBackground')};
 `;
 
 export default Contents;

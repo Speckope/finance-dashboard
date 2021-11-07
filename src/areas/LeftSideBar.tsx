@@ -31,7 +31,7 @@ const StyledLeftSideBar = styled.nav`
 
   width: 8%;
 
-  background-color: antiquewhite;
+  background-color: ${cvar('colorBackground')};
   border-right: 1px solid ${cvar('colorBackgroundVariant')};
 `;
 
