@@ -10,6 +10,10 @@ export const CSSVariables = {
   fontColorSecondary: '--font-color-secondary',
   fontColorHeading: '--font-color-heading',
 
+  svgColor: '--svg-color',
+
+  searchColor: '--search-color',
+
   fontPrimary: '--font-primary',
   fontSecondary: '--font-secondary',
 };

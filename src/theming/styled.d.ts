@@ -13,6 +13,8 @@ declare module 'styled-components' {
       background: string;
       backgroundVariant: string;
       cardBackground: string;
+      svgColor: string;
+      searchColor: string;
     };
 
     fontColors: {

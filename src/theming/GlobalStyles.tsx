@@ -24,6 +24,10 @@ export const GlobalStyles = styled.createGlobalStyle`
       props.theme.colors.backgroundVariant};
     --card-background: ${(props) => props.theme.colors.cardBackground};
 
+    --svg-color: ${(props) => props.theme.colors.svgColor};
+
+    --search-color: ${(props) => props.theme.colors.searchColor};
+
     --font-color-primary: ${(props) => props.theme.fontColors.primary};
     --font-color-secondary: ${(props) => props.theme.fontColors.secondary};
     --font-color-heading: ${(props) => props.theme.fontColors.headingColor};
