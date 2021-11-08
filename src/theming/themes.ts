@@ -9,6 +9,7 @@ export const lightTheme: DefaultTheme = {
     cardBackground: '#FEFEFF',
     svgColor: '#000000',
     searchColor: '#F9F9FB',
+    borderColor: '#EBEBEB',
   },
 
   fontColors: {

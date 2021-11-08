@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   gap: 1rem;
 
   background-color: ${cvar('cardBackground')};
-  border: 1px solid #ebebeb;
+  border: 1px solid ${cvar('borderColor')};
   border-radius: 12px;
 
   transition: 0.3s ease;

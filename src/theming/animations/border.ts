@@ -7,7 +7,7 @@ export const border = keyframes`
       border: 1px solid ${cvar('colorBackground')};
     }
     to {
-      border: 1px solid #ebebeb;
+      border: 1px solid ${cvar('borderColor')};
     }
   
 `;

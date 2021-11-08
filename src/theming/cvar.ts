@@ -10,6 +10,8 @@ export const CSSVariables = {
   fontColorSecondary: '--font-color-secondary',
   fontColorHeading: '--font-color-heading',
 
+  borderColor: '--border-color',
+
   svgColor: '--svg-color',
 
   searchColor: '--search-color',

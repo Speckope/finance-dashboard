@@ -15,6 +15,7 @@ declare module 'styled-components' {
       cardBackground: string;
       svgColor: string;
       searchColor: string;
+      borderColor: string;
     };
 
     fontColors: {
