@@ -3,23 +3,18 @@ import { arrowDown } from 'src/theming/animations/arrowDown';
 import { border } from 'src/theming/animations/border';
 import { cvar } from 'src/theming/cvar';
 import styled, { css } from 'styled-components';
+import { Wrapper as TransactionItemWrapper } from './TransactionItem';
 
 interface SmallButtonProps {
-  height?: string;
-  width?: string;
   clickable?: boolean;
 }
 
 const SmallButton: React.FC<SmallButtonProps> = ({
   children,
-  height = '4.3rem',
-  width = '4.3rem',
   clickable = false,
 }) => {
   return (
-    <StyledSmallButton clickable={clickable} height={height} width={width}>
-      {children}
-    </StyledSmallButton>
+    <StyledSmallButton clickable={clickable}>{children}</StyledSmallButton>
   );
 };
 
@@ -58,6 +53,12 @@ const StyledSmallButton = styled.div<SmallButtonProps>`
   svg {
     height: 1.7rem;
     width: 1.9rem;
+  }
+
+  // It will change it's size when inside TransactionItem
+  ${TransactionItemWrapper} & {
+    width: 5.6rem;
+    height: 5.6rem;
   }
 `;
 
