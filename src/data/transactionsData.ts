@@ -1,3 +1,5 @@
+import { randomId } from 'src/utils/randomId';
+
 export type Transaction = {
   id: string;
   type: 'income' | 'expense' | 'transfer';
@@ -5,10 +7,6 @@ export type Transaction = {
   title: string;
   description: string;
   date: Date;
-};
-
-const randomId = () => {
-  return Math.random().toString(36).substring(2, 7);
 };
 
 const today = new Date();
