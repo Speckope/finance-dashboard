@@ -28,6 +28,10 @@ const ContentsWrapper = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
+
+  max-height: 100vh;
+  overflow-y: scroll;
+
   padding-left: 7rem;
   padding-right: 7rem;
 
@@ -38,6 +42,9 @@ const ContentsTopWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  padding-bottom: 7.5rem;
+  margin-top: 5rem;
 `;
 
 export default Contents;

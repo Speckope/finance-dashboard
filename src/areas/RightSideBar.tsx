@@ -10,6 +10,7 @@ const RightSideBar: React.FC<RightSideBarProps> = ({}) => {
 
 const StyledRightSideBar = styled.div`
   width: 33%;
+  max-height: 100vh;
 
   background-color: ${cvar('colorBackgroundVariant')};
 `;
