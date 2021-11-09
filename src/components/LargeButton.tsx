@@ -22,7 +22,7 @@ const StyledLargeButton = styled(motion.button)`
     cursor: pointer;
   }
 
-  height: 6.9rem;
+  min-height: 6.9rem;
   width: 6.6rem;
   border-radius: 0rem 1.5rem 1.5rem 1.5rem;
 

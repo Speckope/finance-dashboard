@@ -15,35 +15,35 @@ const CardsList: React.FC<CardsListProps> = ({}) => {
     <Wrapper>
       <Card>
         <HomeLoanSVG />
-        <Text color='fontColorSecondary' size='1.4rem'>
+        <Text color='fontColorSecondary' size='1.4rem' fontWeight='bold'>
           <h3>Home Loan</h3>
         </Text>
       </Card>
 
       <Card>
         <CarLoanSVG />
-        <Text color='fontColorSecondary' size='1.4rem'>
+        <Text color='fontColorSecondary' size='1.4rem' fontWeight='bold'>
           <h3>Car Loan</h3>
         </Text>
       </Card>
 
       <Card>
         <MaintenanceSVG />
-        <Text color='fontColorSecondary' size='1.4rem'>
+        <Text color='fontColorSecondary' size='1.4rem' fontWeight='bold'>
           <h3>Maintenance</h3>
         </Text>
       </Card>
 
       <Card>
         <BoostersSVG />
-        <Text color='fontColorSecondary' size='1.4rem'>
+        <Text color='fontColorSecondary' size='1.4rem' fontWeight='bold'>
           <h3>Boosters</h3>
         </Text>
       </Card>
 
       <Card>
         <SavingsSVG />
-        <Text color='fontColorSecondary' size='1.4rem'>
+        <Text color='fontColorSecondary' size='1.4rem' fontWeight='bold'>
           <h3>Savings</h3>
         </Text>
       </Card>
@@ -57,7 +57,11 @@ const Wrapper = styled.div`
   display: flex;
   align-self: center;
   gap: 1rem;
+  /* flex-wrap: wrap; */
+
   justify-content: space-between;
+
+  padding-bottom: 6rem;
 
   width: 100%;
   max-width: 80rem;
