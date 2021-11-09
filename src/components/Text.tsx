@@ -7,6 +7,7 @@ interface TextProps {
   font?: keyof typeof CSSVariables;
   color?: keyof typeof CSSVariables;
   fontWeight?: number | string;
+  uppercase?: boolean;
 }
 
 // PASS APPROPRIATE h TAG AS CHILDREN
@@ -16,9 +17,16 @@ const Text: React.FC<TextProps> = ({
   color = 'fontColorPrimary',
   fontWeight = 'normal',
   children,
+  uppercase = false,
 }) => {
   return (
-    <StyledText font={font} size={size} color={color} fontWeight={fontWeight}>
+    <StyledText
+      uppercase={uppercase}
+      font={font}
+      size={size}
+      color={color}
+      fontWeight={fontWeight}
+    >
       {children}
     </StyledText>
   );
@@ -30,13 +38,15 @@ const StyledText = styled.div<TextProps>`
   h1,
   h2,
   h3,
-  h4 {
-    font: ${(props) => cvar(props.font!)};
+  h4,
+  p {
+    font-family: ${(props) => cvar(props.font!)};
     font-size: ${(props) => props.size};
     color: ${(props) => cvar(props.color!)};
     font-weight: ${(props) => props.fontWeight!};
     // h tags have different default margins. Normalize it.
     margin: 0;
+    ${(props) => (props.uppercase ? 'text-transform: uppercase;' : null)};
   }
 `;
 
