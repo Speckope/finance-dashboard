@@ -9,9 +9,12 @@ export type Transaction = {
   date: Date;
 };
 
+// Always get today and yesterday date for mock data,
+// so it is being shown in the preview!
 const today = new Date();
 const yesterday = new Date(today);
 yesterday.setDate(yesterday.getDate() - 1);
+// For test, transactions with this date should not be displayed
 const dayBeforeYesterday = new Date(today);
 dayBeforeYesterday.setDate(dayBeforeYesterday.getDate() - 2);
 

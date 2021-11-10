@@ -1,56 +1,71 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Transaction, transactionsData } from 'src/data/transactionsData';
 import { cvar } from 'src/theming/cvar';
 import styled from 'styled-components';
 import Text from './Text';
 import TransactionItem from './TransactionItem';
 
+// Function to display date in "Day Month, Year" format
 const formatDate = (date: Date) => {
   const dateArray = date.toDateString().split(' ');
   return `${dateArray[2]} ${dateArray[1]}, ${dateArray[3]}`;
 };
 
+// Get dates, so we know what day is today
 const todayDate = new Date();
 const yesterdayDate = new Date(todayDate);
+yesterdayDate.setDate(yesterdayDate.getDate() - 1);
 
 interface TransactionListProps {}
 
 const TransactionList: React.FC<TransactionListProps> = ({}) => {
-  const today: Transaction[] = [];
-  const yesterday: Transaction[] = [];
+  const [today, setToday] = useState<Transaction[]>([]);
+  const [yesterday, setYesterday] = useState<Transaction[]>([]);
 
-  transactionsData.forEach((transaction, i) => {
-    // Push items into today if it was today
-    if (
-      transaction.date.getDate() === todayDate.getDate() &&
-      transaction.date.getMonth() === todayDate.getMonth() &&
-      transaction.date.getFullYear() === todayDate.getFullYear()
-    ) {
-      today.push(transaction);
-    } else if (
-      // Push transaction into yesterday if it was yesterday
-      transaction.date.getDate() === yesterdayDate.getDate() &&
-      transaction.date.getMonth() === yesterdayDate.getMonth() &&
-      transaction.date.getFullYear() === yesterdayDate.getFullYear()
-    ) {
-      yesterday.push(transaction);
-    } else {
-      return;
-    }
-  });
+  useEffect(() => {
+    // Create temporary arrays that in which transaction will be pushed
+    const today: Transaction[] = [];
+    const yesterday: Transaction[] = [];
 
-  const renderDay = (date: Date, dayArr: Transaction[]) => {
+    transactionsData.forEach((transaction) => {
+      // Push items into today if it was today
+      if (
+        transaction.date.getDate() === todayDate.getDate() &&
+        transaction.date.getMonth() === todayDate.getMonth() &&
+        transaction.date.getFullYear() === todayDate.getFullYear()
+      ) {
+        today.push(transaction);
+      } else if (
+        // Push transaction into yesterday if it was yesterday
+        transaction.date.getDate() === yesterdayDate.getDate() &&
+        transaction.date.getMonth() === yesterdayDate.getMonth() &&
+        transaction.date.getFullYear() === yesterdayDate.getFullYear()
+      ) {
+        yesterday.push(transaction);
+      } else {
+        return;
+      }
+    });
+
+    // Update state after a loop to limit component rerender
+    setToday(today);
+    setYesterday(yesterday);
+  }, []);
+
+  const renderDay = (date: Date, dayArr: Transaction[], day: string) => {
     if (dayArr) {
       return (
         <DayWrapper>
           <LineDateWrapper>
             <Text uppercase color='fontColorSecondary'>
-              <h4> TODAY|{formatDate(date)} </h4>
+              <h4>
+                {day}|{formatDate(date)}
+              </h4>
             </Text>
             <Line />
           </LineDateWrapper>
           <TransactionsWrapper>
-            {today.map((transaction) => (
+            {dayArr.map((transaction) => (
               <TransactionItem key={transaction.id} transaction={transaction} />
             ))}
           </TransactionsWrapper>
@@ -63,8 +78,8 @@ const TransactionList: React.FC<TransactionListProps> = ({}) => {
 
   return (
     <Wrapper>
-      {renderDay(todayDate, today)}
-      {renderDay(yesterdayDate, yesterday)}
+      {renderDay(todayDate, today, 'today')}
+      {renderDay(yesterdayDate, yesterday, 'yesterday')}
     </Wrapper>
   );
 };

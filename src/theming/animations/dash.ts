@@ -1,5 +1,6 @@
 import { keyframes } from 'styled-components';
 
+// Animation for paths
 export const dash = keyframes`
     0% {
       stroke-dashoffset: 1;

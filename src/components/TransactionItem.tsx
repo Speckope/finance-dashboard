@@ -11,6 +11,7 @@ interface TransactionItemProps {
 }
 
 const TransactionItem: React.FC<TransactionItemProps> = ({ transaction }) => {
+  // Render correct svg
   let svg;
   if (transaction.type === 'expense') {
     svg = <MinusSVG />;
@@ -47,7 +48,7 @@ export const Wrapper = styled.div`
   // Other color for transaction svg
   .transfer-svg {
     path {
-      fill: '#24CCA7';
+      fill: #24cca7;
     }
   }
 `;

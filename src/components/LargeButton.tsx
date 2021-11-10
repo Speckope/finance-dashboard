@@ -24,6 +24,7 @@ const StyledLargeButton = styled(motion.button)`
 
   min-height: 6.9rem;
   width: 6.6rem;
+  margin-bottom: 5rem;
   border-radius: 0rem 1.5rem 1.5rem 1.5rem;
 
   background-color: ${cvar('colorPrimary')};
