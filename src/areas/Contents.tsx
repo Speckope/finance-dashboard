@@ -9,7 +9,7 @@ import RecentTransactions from 'src/components/RecentTransactions';
 
 interface ContentsProps {}
 
-const Contents: React.FC<ContentsProps> = ({}) => {
+const Contents: React.FC<ContentsProps> = () => {
   return (
     <ContentsWrapper>
       <ContentsTopWrapper>

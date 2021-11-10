@@ -13,7 +13,7 @@ import { ReactComponent as StatsSvg } from '../assets/left-sidebar/stats-icon.sv
 
 interface IconsMenuProps {}
 
-const IconsMenu: React.FC<IconsMenuProps> = ({}) => {
+const IconsMenu: React.FC<IconsMenuProps> = () => {
   // Set pathLength of all path elements to 1,
   // this way we can do math on strokes based on 1
   useLayoutEffect(() => {

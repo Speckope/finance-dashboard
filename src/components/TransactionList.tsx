@@ -18,7 +18,7 @@ yesterdayDate.setDate(yesterdayDate.getDate() - 1);
 
 interface TransactionListProps {}
 
-const TransactionList: React.FC<TransactionListProps> = ({}) => {
+const TransactionList: React.FC<TransactionListProps> = () => {
   const [today, setToday] = useState<Transaction[]>([]);
   const [yesterday, setYesterday] = useState<Transaction[]>([]);
 

@@ -9,7 +9,7 @@ import { cvar } from 'src/theming/cvar';
 
 interface LeftSideBarProps {}
 
-const LeftSideBar: React.FC<LeftSideBarProps> = ({}) => {
+const LeftSideBar: React.FC<LeftSideBarProps> = () => {
   return (
     <StyledLeftSideBar>
       <Logo />

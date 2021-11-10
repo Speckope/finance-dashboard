@@ -10,7 +10,7 @@ import Card from './Card';
 
 interface CardsListProps {}
 
-const CardsList: React.FC<CardsListProps> = ({}) => {
+const CardsList: React.FC<CardsListProps> = () => {
   return (
     <Wrapper>
       <Card>

@@ -7,7 +7,7 @@ import { ReactComponent as SearchSVG } from '../assets/top-area/search-icon.svg'
 
 interface SearchBarProps {}
 
-const SearchBar: React.FC<SearchBarProps> = ({}) => {
+const SearchBar: React.FC<SearchBarProps> = () => {
   return (
     <Wrapper>
       <SearchSVG className='search-svg' />

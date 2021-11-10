@@ -7,7 +7,7 @@ import TransactionList from './TransactionList';
 
 interface RecentTransactionsProps {}
 
-const RecentTransactions: React.FC<RecentTransactionsProps> = ({}) => {
+const RecentTransactions: React.FC<RecentTransactionsProps> = () => {
   return (
     <Wrapper>
       <TopAreaWrapper>

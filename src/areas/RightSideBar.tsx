@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 interface RightSideBarProps {}
 
-const RightSideBar: React.FC<RightSideBarProps> = ({}) => {
+const RightSideBar: React.FC<RightSideBarProps> = () => {
   return <StyledRightSideBar>Right SideBar</StyledRightSideBar>;
 };
 

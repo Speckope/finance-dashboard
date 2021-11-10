@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 interface MainPageProps {}
 
-const MainPage: React.FC<MainPageProps> = ({}) => {
+const MainPage: React.FC<MainPageProps> = () => {
   return (
     <Wrapper>
       <LeftSideBar />
