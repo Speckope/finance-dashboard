@@ -6,6 +6,7 @@ import CardsList from 'src/components/CardsList';
 import { cvar } from 'src/theming/cvar';
 import SearchBar from 'src/components/SearchBar';
 import RecentTransactions from 'src/components/RecentTransactions';
+import LineChart from 'src/components/LineChart';
 
 interface ContentsProps {}
 
@@ -19,6 +20,12 @@ const Contents: React.FC<ContentsProps> = () => {
         <SearchBar />
       </ContentsTopWrapper>
       <CardsList />
+      <LineAreaWraper>
+        <Text size='2.7rem' fontWeight='bold' color='fontColorHeading'>
+          <h2>Your Account Status</h2>
+        </Text>
+        <LineChart />
+      </LineAreaWraper>
       <RecentTransactions />
     </ContentsWrapper>
   );
@@ -45,6 +52,15 @@ const ContentsTopWrapper = styled.div`
 
   padding-bottom: 7.5rem;
   margin-top: 5rem;
+`;
+
+const LineAreaWraper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 5rem;
+
+  padding-bottom: 6rem;
 `;
 
 export default Contents;
