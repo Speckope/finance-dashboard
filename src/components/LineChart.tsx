@@ -1,15 +1,28 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { ResponsiveLine, Serie } from '@nivo/line';
+import React, {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
+import { ResponsiveLine, Serie, PointMouseHandler } from '@nivo/line';
 import styled, { ThemeContext } from 'styled-components';
 import { balanceData } from 'src/data/balanceData';
 import { formatBalanceData } from 'src/utils/formatBalnceData';
 import { cvar } from 'src/theming/cvar';
 import { Theme } from '@nivo/core';
 import Text from './Text';
+import { motion, useMotionValue } from 'framer-motion';
 
 interface LineChartProps {}
 
 const LineChart: React.FC<LineChartProps> = () => {
+  const tooltipRef = useRef<HTMLDivElement | null>(null);
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const height = useMotionValue(0);
+
   // Create theme for ResponsiveLine from our SC theme
   const themeContext = useContext(ThemeContext);
   const lineTheme: Theme = {
@@ -25,14 +38,38 @@ const LineChart: React.FC<LineChartProps> = () => {
     fontSize: 13,
   };
 
+  // DATA
   const [formattedData, setFormattedData] = useState<Serie[]>([]);
-
   useEffect(() => {
     setFormattedData(formatBalanceData(balanceData));
   }, []);
 
+  // moveHandler for flag the chart
+  let tooltipXPosition, tooltipYPosition, chartYPosition, divHeight;
+  const moveHandler: PointMouseHandler | undefined = (point, event) => {
+    let tooltipDimensions = tooltipRef.current!.getBoundingClientRect();
+    let chartDimensions = (
+      event.target as SVGRectElement
+    ).getBoundingClientRect();
+
+    tooltipXPosition = tooltipDimensions.x;
+    // It's calculated from top, and we want bottom of tooltip
+    tooltipYPosition = tooltipDimensions.y + tooltipDimensions.height;
+
+    // Get y position of x axis
+    chartYPosition = chartDimensions.y + chartDimensions.height;
+
+    // Render a div with height being a difference between toolip
+    // and chart x position
+    divHeight = chartYPosition - tooltipYPosition;
+
+    height.set(divHeight - 20);
+    x.set(tooltipXPosition as number);
+    y.set(tooltipYPosition + 20);
+  };
+
   return (
-    <Wrapper>
+    <Wrapper id='line-chart-wrapper'>
       <ResponsiveLine
         data={formattedData}
         margin={{ top: 50, right: 50, bottom: 50, left: 60 }}
@@ -79,16 +116,20 @@ const LineChart: React.FC<LineChartProps> = () => {
         // Alternative is enableSlices (different tooltip will be rendered)
         // with crosshair only for specified axis
         useMesh={true}
+        onMouseMove={moveHandler}
         // No points on line or grid
         enablePoints={false}
         enableGridX={false}
         enableGridY={false}
         animate={true}
+        // Looks nice with this
+        enableArea={true}
+        areaOpacity={0.1}
         // Our theme
         theme={lineTheme}
         // Custom tooltip. We get access to point
         tooltip={(point) => (
-          <Tooltip>
+          <Tooltip ref={tooltipRef}>
             <Text
               // TODO Add 500 font weight to @fontFace. Both Tomorrow and Open Sans
               fontWeight='500'
@@ -96,7 +137,7 @@ const LineChart: React.FC<LineChartProps> = () => {
               font='fontSecondary'
               size='1.3rem'
             >
-              <p>{point.point.data.yFormatted}</p>
+              <p>{point.point.data.y}</p>
             </Text>
           </Tooltip>
         )}
@@ -105,6 +146,14 @@ const LineChart: React.FC<LineChartProps> = () => {
         lineWidth={4}
         // Line rendering algorithm
         curve='natural'
+      />
+      <Flag
+        style={{
+          left: x,
+          top: y,
+          height,
+        }}
+        transition={{ duration: 3, ease: 'easeOut' }}
       />
     </Wrapper>
   );
@@ -135,6 +184,12 @@ const Tooltip = styled.div`
   border-radius: 5px;
 
   background-color: ${cvar('fontColorPrimary')};
+`;
+
+const Flag = styled(motion.div)`
+  background-color: aqua;
+  position: absolute;
+  width: 2px;
 `;
 
 export default LineChart;
