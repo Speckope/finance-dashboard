@@ -9,6 +9,8 @@ interface SmallButtonProps {
   clickable?: boolean;
 }
 
+// Need & React.ComponentProps<'button'>, else it throws an error when trying
+// to use some props elsewhere (id in RightSideBar)
 const SmallButton: React.FC<SmallButtonProps> = ({
   children,
   clickable = false,
@@ -20,10 +22,10 @@ const SmallButton: React.FC<SmallButtonProps> = ({
 
 // Helper for complex mixins in Styled, else it won't compile.
 const animationMixin = css<SmallButtonProps>`
-  animation: ${border} 1s forwards;
+  animation: ${border} 0.3s forwards;
 `;
 
-const StyledSmallButton = styled.div<SmallButtonProps>`
+export const StyledSmallButton = styled.button<SmallButtonProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,6 +33,14 @@ const StyledSmallButton = styled.div<SmallButtonProps>`
   height: 4.3rem;
   width: 4.3rem;
   border-radius: 1.1rem;
+
+  &,
+  &:link,
+  &:visited {
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
 
   background-color: ${cvar('cardBackground')};
   box-shadow: 0px 108.006px 86.4048px rgba(41, 72, 152, 0.05),
