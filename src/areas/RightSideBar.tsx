@@ -1,3 +1,4 @@
+import BarChart from 'src/components/BarChart';
 import CreditCard from 'src/components/CreditCard';
 import SmallButton, { StyledSmallButton } from 'src/components/SmallButton';
 import { cvar } from 'src/theming/cvar';
@@ -22,15 +23,25 @@ const RightSideBar: React.FC<RightSideBarProps> = () => {
       <CardWrapper>
         <CreditCard />
       </CardWrapper>
+      <BarChart />
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
   width: 33%;
+  max-width: 48rem;
   max-height: 100vh;
 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
   background-color: ${cvar('colorBackgroundVariant')};
+
+  padding-top: 5rem;
+  padding-left: 4rem;
+  padding-right: 6rem;
 `;
 
 const CardWrapper = styled.div`
@@ -45,9 +56,6 @@ const TopIconsWrapper = styled.div`
   display: flex;
   justify-content: right;
   gap: 1rem;
-
-  margin-top: 5rem;
-  margin-right: 7.5rem;
 
   ${StyledSmallButton}:last-child {
     margin-left: 3rem;
