@@ -7,6 +7,7 @@ interface TextProps {
   font?: keyof typeof CSSVariables;
   color?: keyof typeof CSSVariables;
   fontWeight?: number | string;
+  letterSpacing?: string;
   uppercase?: boolean;
 }
 
@@ -16,11 +17,13 @@ const Text: React.FC<TextProps> = ({
   size = '1.6rem',
   color = 'fontColorPrimary',
   fontWeight = 'normal',
+  letterSpacing = 'normal',
   children,
   uppercase = false,
 }) => {
   return (
     <StyledText
+      letterSpacing={letterSpacing}
       uppercase={uppercase}
       font={font}
       size={size}
@@ -32,7 +35,7 @@ const Text: React.FC<TextProps> = ({
   );
 };
 
-const StyledText = styled.div<TextProps>`
+export const StyledText = styled.div<TextProps>`
   // This way we can get the semantic html meaning
   // With control over size in one reusable component
   h1,
@@ -44,6 +47,7 @@ const StyledText = styled.div<TextProps>`
     font-size: ${(props) => props.size};
     color: ${(props) => cvar(props.color!)};
     font-weight: ${(props) => props.fontWeight!};
+    letter-spacing: ${(props) => props.letterSpacing!};
     // h tags have different default margins. Normalize it.
     margin: 0;
     ${(props) => (props.uppercase ? 'text-transform: uppercase;' : null)};
