@@ -23,7 +23,6 @@ const CreditCard: React.FC<CreditCardProps> = ({}) => {
       </TopWrapper>
       {/* MIDDLE */}
       <Text
-        //TODO Add font weight 600 to Tomorrow, set it here
         color='colorBackground'
         fontWeight='600'
         size='2rem'
@@ -38,7 +37,6 @@ const CreditCard: React.FC<CreditCardProps> = ({}) => {
           <Text size='1.1rem' color='fontColorSecondary' fontWeight='bold'>
             <h4>Expiry date</h4>
           </Text>
-          {/* //TODO Add font weight 500 to Tomorrow, set it here */}
           <Text
             size='1.3rem'
             color='colorBackground'

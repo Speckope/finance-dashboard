@@ -86,8 +86,6 @@ const TransactionList: React.FC<TransactionListProps> = () => {
 
 export default TransactionList;
 
-// TODO Abstract Wrapper into one with props gap and
-// padding props, if changes individually won't be needed
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;

@@ -1,12 +1,12 @@
 import { randomValue } from '../utils/randomValue';
 
-export interface barChartDataItem {
+export interface BarChartDataItem {
   date: Date;
   uploads: number;
   downloads: number;
 }
 
-export const barChartData: barChartDataItem[] = [
+export const barChartData: BarChartDataItem[] = [
   {
     date: new Date(2021, 11, 12),
     uploads: randomValue(5000, 30000),

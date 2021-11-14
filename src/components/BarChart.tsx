@@ -1,6 +1,6 @@
-import { ResponsiveBar } from '@nivo/bar';
-import React from 'react';
-import { barChartData, barChartDataItem } from 'src/data/barChartData';
+import { ComputedDatum, ResponsiveBar } from '@nivo/bar';
+import React, { useRef, useState } from 'react';
+import { barChartData } from 'src/data/barChartData';
 import { cvar } from 'src/theming/cvar';
 import styled from 'styled-components';
 import Text from './Text';
@@ -9,26 +9,66 @@ import { ReactComponent as DownArrowSVG } from 'src/assets/right-sidebar/down-ar
 import { ReactComponent as UpArrowSVG } from 'src/assets/right-sidebar/up-arrow-icon.svg';
 import SmallButton from './SmallButton';
 import LargeButton from './LargeButton';
+import { Tooltip } from './Tooltipt';
+import { formatBarData } from 'src/utils/formatBarData';
 
 interface BarChartProps {}
 
-const formatBarData = (data: barChartDataItem[]) => {
-  return data.map((item) => ({
-    date: (() => {
-      const dateArr = item.date.toDateString().split(' ');
-      return dateArr[2].toString() + ' ' + dateArr[1];
-    })(),
-    downloads: item.downloads,
-  }));
-};
-
 const BarChart: React.FC<BarChartProps> = () => {
+  const [values, setValues] = useState<{
+    uploads: number;
+    downloads: number;
+  }>({
+    uploads: barChartData[0].uploads,
+    downloads: barChartData[0].downloads,
+  });
+
+  const barWrapperRef = useRef<HTMLDivElement | null>(null);
+
+  // Click on Bar
+  // TODO Event listeners just get stacked and not removed
+  // It happends bc of a new function being created on each click, but I don't
+  // know how to solve it.
+  const barClick: (
+    datum: ComputedDatum<{
+      date: string;
+      uploads: number;
+      downloads: number;
+    }> & {
+      color: string;
+    },
+    event: React.MouseEvent<Element>
+  ) => void = (point, event) => {
+    var target = event.target as SVGRectElement;
+
+    const changeBack = () => {
+      target.style.fill = cvar('colorPrimary');
+      console.log('changed');
+    };
+
+    console.log(point);
+
+    setValues({
+      downloads: point.data.downloads,
+      uploads: point.data.uploads,
+    });
+
+    // Clear event listener if there is some.
+    barWrapperRef.current?.removeEventListener('click', changeBack);
+
+    target.style.fill = cvar('colorSecondary');
+
+    // When you click outside of a bar or second time on it,
+    // Change the color back!
+    barWrapperRef.current?.addEventListener('click', changeBack);
+  };
+
   return (
     <Wrapper>
       <TopWrapper>
         <VerticalTextWrapper>
           <Text size='2.4rem' font='fontSecondary' fontWeight='500'>
-            <h3>24,170</h3>
+            <h3>{values.downloads + values.uploads}</h3>
           </Text>
           <Text color='fontColorSecondary' fontWeight='500'>
             <h4>From 12 Oct - 18 Oct</h4>
@@ -38,7 +78,7 @@ const BarChart: React.FC<BarChartProps> = () => {
           <PieChartSVG />
         </SmallButton>
       </TopWrapper>
-      <BarChartWrapper>
+      <BarChartWrapper ref={barWrapperRef}>
         <ResponsiveBar
           data={formatBarData(barChartData)}
           keys={['downloads']}
@@ -47,9 +87,10 @@ const BarChart: React.FC<BarChartProps> = () => {
           // padding of bars
           padding={0.3}
           colors={cvar('colorPrimary')}
+          onClick={barClick}
+          borderRadius={6}
           axisTop={null}
           axisRight={null}
-          borderRadius={6}
           axisBottom={{
             tickSize: 0,
             tickPadding: 10,
@@ -85,6 +126,18 @@ const BarChart: React.FC<BarChartProps> = () => {
               );
             },
           }}
+          tooltip={(point) => (
+            <Tooltip>
+              <Text
+                fontWeight='500'
+                color='colorBackground'
+                font='fontSecondary'
+                size='1.3rem'
+              >
+                <p>{point.value}</p>
+              </Text>
+            </Tooltip>
+          )}
           enableGridY={false}
           enableLabel={false}
           axisLeft={null}
@@ -110,7 +163,7 @@ const BarChart: React.FC<BarChartProps> = () => {
               <h4>Uploads</h4>
             </Text>
             <Text font='fontSecondary' size='2.4rem' fontWeight='500'>
-              <p>24,170</p>
+              <p>{values?.uploads}</p>
             </Text>
           </VerticalTextWrapper>
         </UpDownWrapper>
@@ -124,7 +177,7 @@ const BarChart: React.FC<BarChartProps> = () => {
               <h4>Downloads</h4>
             </Text>
             <Text font='fontSecondary' size='2.4rem' fontWeight='500'>
-              <p>24,170</p>
+              <p>{values?.downloads}</p>
             </Text>
           </VerticalTextWrapper>
         </UpDownWrapper>
@@ -174,11 +227,10 @@ const UpDownWrapper = styled.div`
 
 const BottomWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 3rem;
+  justify-content: space-between;
 
-  width: 90%;
+  width: 95%;
 
   margin-top: 6rem;
 `;

@@ -6,6 +6,7 @@ import { formatBalanceData } from 'src/utils/formatBalnceData';
 import { cvar } from 'src/theming/cvar';
 import { Theme } from '@nivo/core';
 import Text from './Text';
+import { Tooltip } from './Tooltipt';
 
 interface LineChartProps {}
 
@@ -90,7 +91,6 @@ const LineChart: React.FC<LineChartProps> = () => {
         tooltip={(point) => (
           <Tooltip>
             <Text
-              // TODO Add 500 font weight to @fontFace. Both Tomorrow and Open Sans
               fontWeight='500'
               color='colorBackground'
               font='fontSecondary'
@@ -123,18 +123,6 @@ const Wrapper = styled.div`
   font-family: ${cvar('fontSecondary')};
 
   width: 100%;
-`;
-
-const Tooltip = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  min-height: 3.1rem;
-  min-width: 6rem;
-  border-radius: 5px;
-
-  background-color: ${cvar('fontColorPrimary')};
 `;
 
 export default LineChart;

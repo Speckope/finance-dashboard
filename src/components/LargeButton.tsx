@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import React from 'react';
 import { CSSVariables, cvar } from 'src/theming/cvar';
 import styled from 'styled-components';
@@ -20,7 +19,7 @@ const LargeButton: React.FC<LargeButtonProps> = ({
   );
 };
 
-const StyledLargeButton = styled(motion.button)<LargeButtonProps>`
+const StyledLargeButton = styled.button<LargeButtonProps>`
   display: flex;
   justify-content: center;
   align-items: center;
