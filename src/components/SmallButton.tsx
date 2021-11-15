@@ -56,6 +56,7 @@ export const StyledSmallButton = styled.button<SmallButtonProps>`
     .download-arrow {
       animation: ${arrowDown} 1s infinite;
     }
+    scale: 1.1;
     // Clickable animation
     ${(props) => (props.clickable ? animationMixin : '')}
   }

@@ -14,7 +14,7 @@ const LeftSideBar: React.FC<LeftSideBarProps> = () => {
     <StyledLeftSideBar>
       <Logo />
       <IconsMenu />
-      <LargeButton borderRadius='0px 15px 15px 15px'>
+      <LargeButton clickable borderRadius='0px 15px 15px 15px'>
         <PlusSvg />
       </LargeButton>
     </StyledLeftSideBar>

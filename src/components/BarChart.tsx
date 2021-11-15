@@ -53,14 +53,14 @@ const BarChart: React.FC<BarChartProps> = () => {
       uploads: point.data.uploads,
     });
 
-    // Clear event listener if there is some.
-    barWrapperRef.current?.removeEventListener('click', changeBack);
-
     target.style.fill = cvar('colorSecondary');
 
     // When you click outside of a bar or second time on it,
     // Change the color back!
-    barWrapperRef.current?.addEventListener('click', changeBack);
+    barWrapperRef.current?.addEventListener('click', changeBack, {
+      // This will remove listener after it's invoked!
+      once: true,
+    });
   };
 
   return (
@@ -68,10 +68,15 @@ const BarChart: React.FC<BarChartProps> = () => {
       <TopWrapper>
         <VerticalTextWrapper>
           <Text size='2.4rem' font='fontSecondary' fontWeight='500'>
-            <h3>{values.downloads + values.uploads}</h3>
+            <h3>
+              Total: {/* return total number of downloads + uploads  */}
+              {barChartData
+                .map((item) => item.downloads + item.uploads)
+                .reduce((p, c) => p + c)}
+            </h3>
           </Text>
           <Text color='fontColorSecondary' fontWeight='500'>
-            <h4>From 12 Oct - 18 Oct</h4>
+            <h4>From 12 Dec - 18 Dec</h4>
           </Text>
         </VerticalTextWrapper>
         <SmallButton>
