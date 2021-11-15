@@ -37,12 +37,21 @@ const ContentsWrapper = styled.div`
   flex-direction: column;
 
   max-height: 100vh;
-  overflow-y: scroll;
+  overflow-x: hidden;
+  overflow-y: visible;
 
   padding-left: 7rem;
   padding-right: 7rem;
+  padding-top: 4rem;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
 
   background-color: ${cvar('colorBackground')};
+
+  // Chrome else works
+  &::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
 `;
 
 const ContentsTopWrapper = styled.div`
@@ -51,7 +60,6 @@ const ContentsTopWrapper = styled.div`
   justify-content: space-between;
 
   padding-bottom: 7.5rem;
-  margin-top: 5rem;
 `;
 
 const LineAreaWraper = styled.div`

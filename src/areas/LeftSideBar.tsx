@@ -26,7 +26,10 @@ const StyledLeftSideBar = styled.nav`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: 4rem;
+  gap: 1rem;
+
+  padding-bottom: 4rem;
+  padding-top: 4rem;
 
   width: 8%;
   max-height: 100vh;
@@ -39,8 +42,6 @@ const Logo = styled(LogoSvg)`
   justify-self: flex-start;
   min-width: 40px;
   min-height: 30px;
-
-  margin-top: 5rem;
 `;
 
 export default LeftSideBar;

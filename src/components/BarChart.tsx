@@ -79,7 +79,7 @@ const BarChart: React.FC<BarChartProps> = () => {
             <h4>From 12 Dec - 18 Dec</h4>
           </Text>
         </VerticalTextWrapper>
-        <SmallButton>
+        <SmallButton clickable>
           <PieChartSVG />
         </SmallButton>
       </TopWrapper>
@@ -197,10 +197,10 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  margin-top: 20rem;
+  margin-top: 3rem;
 
   width: 35rem;
-  height: 30rem;
+  min-height: 40rem;
 `;
 
 const TopWrapper = styled.div`

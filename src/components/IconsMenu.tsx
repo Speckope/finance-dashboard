@@ -46,7 +46,13 @@ export default IconsMenu;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  justify-content: space-between;
+  gap: 1rem;
+
+  height: 70%;
+
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 
   // group had opacity on it from Figma, reset it.
   g {

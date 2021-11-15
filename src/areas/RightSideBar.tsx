@@ -20,10 +20,10 @@ const RightSideBar: React.FC<RightSideBarProps> = () => {
         </SmallButton>
         <SmallButton clickable>PIC</SmallButton>
       </TopIconsWrapper>
-      <CardWrapper>
+      <CardBarChartWrapper>
         <CreditCard />
-      </CardWrapper>
-      <BarChart />
+        <BarChart />
+      </CardBarChartWrapper>
     </Wrapper>
   );
 };
@@ -31,25 +31,31 @@ const RightSideBar: React.FC<RightSideBarProps> = () => {
 const Wrapper = styled.div`
   width: 33%;
   max-width: 48rem;
-  max-height: 100vh;
 
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 
+  justify-content: space-between;
+
   background-color: ${cvar('colorBackgroundVariant')};
 
-  padding-top: 5rem;
+  padding-top: 4rem;
   padding-left: 4rem;
   padding-right: 6rem;
+  padding-bottom: 4rem;
 `;
 
-const CardWrapper = styled.div`
+const CardBarChartWrapper = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
 
-  margin-top: 9rem;
+  min-height: 87%;
+
+  margin-top: 2rem;
+
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const TopIconsWrapper = styled.div`

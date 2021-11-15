@@ -41,7 +41,6 @@ const StyledLargeButton = styled.button<LargeButtonProps>`
   min-height: 6.9rem;
   width: 6.6rem;
   min-width: 6.6rem;
-  margin-bottom: 5rem;
   border-radius: ${(props) => props.borderRadius};
 
   background-color: ${(props) => cvar(props.color!)};
