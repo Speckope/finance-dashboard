@@ -41,6 +41,17 @@ export const GlobalStyles = styled.createGlobalStyle`
     --font-secondary: ${(props) => props.theme.fonts.secondary};
 
     font-size: 62.5%;
+
+    // tab-landscape
+    @media (max-width: 1250px) {
+      font-size: 56.5%;
+    }
+
+    // tab-vertica
+    @media (max-width: 900px) {
+      font-size: 50%;
+    }
+
     box-sizing: border-box;
     scroll-behavior: smooth;
 
