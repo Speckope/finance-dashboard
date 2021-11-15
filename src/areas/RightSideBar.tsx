@@ -5,12 +5,16 @@ import { cvar } from 'src/theming/cvar';
 import styled from 'styled-components';
 import { ReactComponent as MessageSVG } from '../assets/top-area/message-icon.svg';
 import { ReactComponent as NotificationsSVG } from '../assets/top-area/notifications-icon.svg';
+import { ReactComponent as ActiveSVG } from '../assets/right-sidebar/active-icon.svg';
 
-interface RightSideBarProps {}
+interface RightSideBarProps {
+  setIsRightBarOpen: () => void;
+  isRightBarOpen: boolean;
+}
 
-const RightSideBar: React.FC<RightSideBarProps> = () => {
+const RightSideBar: React.FC<RightSideBarProps> = ({ setIsRightBarOpen }) => {
   return (
-    <Wrapper>
+    <RightSideBarWrapper>
       <TopIconsWrapper>
         <SmallButton clickable>
           <MessageSVG />
@@ -24,13 +28,18 @@ const RightSideBar: React.FC<RightSideBarProps> = () => {
         <CreditCard />
         <BarChart />
       </CardBarChartWrapper>
-    </Wrapper>
+      <Toggle onClick={setIsRightBarOpen} className='bumba'>
+        <ActiveSVG />
+      </Toggle>
+    </RightSideBarWrapper>
   );
 };
 
-const Wrapper = styled.div`
+export const RightSideBarWrapper = styled.div`
   width: 33%;
   max-width: 48rem;
+
+  position: relative;
 
   display: flex;
   flex-direction: column;
@@ -44,6 +53,14 @@ const Wrapper = styled.div`
   padding-left: 4rem;
   padding-right: 6rem;
   padding-bottom: 4rem;
+
+  transition: 0.3s all ease;
+
+  // Invisible circle from card was over top buttons
+  // when on smaller screens
+  ${StyledSmallButton} {
+    z-index: 20;
+  }
 `;
 
 const CardBarChartWrapper = styled.div`
@@ -65,6 +82,29 @@ const TopIconsWrapper = styled.div`
 
   ${StyledSmallButton}:last-child {
     margin-left: 3rem;
+  }
+`;
+
+const Toggle = styled.div`
+  display: none;
+  height: 9rem;
+  width: 2.1rem;
+
+  padding: 10rem 0rem 10rem 4rem;
+
+  position: absolute;
+  top: 50%;
+  left: -3.5rem;
+  transform: translate(-50%, -50%);
+
+  svg {
+    transform: rotateY(180deg) translateY(-50%);
+  }
+
+  @media (max-width: 1150px) {
+    display: block;
+    height: 9rem;
+    width: 2.1rem;
   }
 `;
 
