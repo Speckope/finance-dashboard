@@ -19,7 +19,7 @@ export const lightTheme: DefaultTheme = {
   },
 
   fonts: {
-    primary: '"Open Sans", sans-serif;',
-    secondary: '"Tomorrow", sans-serif;',
+    primary: '"Open Sans", sans-serif',
+    secondary: '"Tomorrow", sans-serif',
   },
 };
