@@ -43,6 +43,12 @@ const ContentsWrapper = styled.div`
   padding-left: 7rem;
   padding-right: 7rem;
   padding-top: 4rem;
+
+  @media (max-width: 550px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: none; /* Firefox */
 
@@ -58,6 +64,7 @@ const ContentsTopWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 
   padding-bottom: 7.5rem;
 `;

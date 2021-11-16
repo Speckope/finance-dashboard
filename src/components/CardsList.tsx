@@ -57,7 +57,7 @@ const Wrapper = styled.div`
   display: flex;
   align-self: center;
   gap: 1rem;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
 
   justify-content: space-between;
 
