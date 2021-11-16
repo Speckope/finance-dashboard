@@ -30,6 +30,8 @@ export const StyledSmallButton = styled.button<SmallButtonProps>`
   justify-content: center;
   align-items: center;
 
+  overflow: hidden;
+
   height: 4.3rem;
   width: 4.3rem;
   border-radius: 1.1rem;
@@ -50,20 +52,42 @@ export const StyledSmallButton = styled.button<SmallButtonProps>`
     0px 8.80049px 7.04039px rgba(41, 72, 152, 0.0196296),
     0px 2.00011px 3.40019px rgba(41, 72, 152, 0.012037);
 
+  ${(props) =>
+    props.clickable
+      ? `
+    
+  `
+      : ''}
   // Hover animations
   &:hover {
     // For downlaod svg
     .download-arrow {
       animation: ${arrowDown} 1s infinite;
     }
-    scale: 1.1;
+    ${(props) =>
+      props.clickable
+        ? `
+      scale: 1.1;
+  `
+        : ''}
     // Clickable animation
     ${(props) => (props.clickable ? animationMixin : '')}
   }
 
+  ${(props) =>
+    props.clickable
+      ? `
+    
+    &:active {
+      scale: 0.9;
+      transition: 0.05s ease;
+    }
+  `
+      : ''}
+
   svg {
-    height: 1.7rem;
-    width: 1.9rem;
+    height: 2rem;
+    width: 2rem;
   }
 
   // It will change it's size when inside TransactionItem

@@ -6,29 +6,40 @@ import styled from 'styled-components';
 import { ReactComponent as MessageSVG } from '../assets/top-area/message-icon.svg';
 import { ReactComponent as NotificationsSVG } from '../assets/top-area/notifications-icon.svg';
 import { ReactComponent as ActiveSVG } from '../assets/right-sidebar/active-icon.svg';
+import ThemeToggle, { StyledThemeToggle } from 'src/components/ThemeToggle';
+import ori from '../assets/right-sidebar/ori-scaled.jpg';
 
 interface RightSideBarProps {
   setIsRightBarOpen: () => void;
   isRightBarOpen: boolean;
+  setTheme: () => void;
+  theme: boolean;
 }
 
-const RightSideBar: React.FC<RightSideBarProps> = ({ setIsRightBarOpen }) => {
+const RightSideBar: React.FC<RightSideBarProps> = ({
+  setIsRightBarOpen,
+  setTheme,
+  theme,
+}) => {
   return (
     <RightSideBarWrapper>
       <TopIconsWrapper>
+        <ThemeToggle isDark={theme} onChange={setTheme} />
         <SmallButton clickable>
           <MessageSVG />
         </SmallButton>
         <SmallButton clickable>
           <NotificationsSVG />
         </SmallButton>
-        <SmallButton clickable>PIC</SmallButton>
+        <SmallButton clickable>
+          <img src={ori} alt='dog' />
+        </SmallButton>
       </TopIconsWrapper>
       <CardBarChartWrapper>
         <CreditCard />
         <BarChart />
       </CardBarChartWrapper>
-      <Toggle onClick={setIsRightBarOpen} className='bumba'>
+      <Toggle onClick={setIsRightBarOpen}>
         <ActiveSVG />
       </Toggle>
     </RightSideBarWrapper>
@@ -66,7 +77,7 @@ export const RightSideBarWrapper = styled.div`
   }
 
   @media (max-height: 700px) {
-    padding-top: 1rem;
+    padding-top: 4rem;
     padding-bottom: 0;
   }
 `;
@@ -86,12 +97,19 @@ const CardBarChartWrapper = styled.div`
 const TopIconsWrapper = styled.div`
   display: flex;
   justify-content: right;
+  width: 98%;
 
   align-self: flex-end;
   gap: 1rem;
 
   ${StyledSmallButton}:last-child {
     margin-left: 3rem;
+  }
+
+  ${StyledThemeToggle} {
+    margin-right: auto;
+
+    transform: translateY(2px);
   }
 `;
 
@@ -100,11 +118,11 @@ const Toggle = styled.div`
   height: 9rem;
   width: 2.1rem;
 
-  padding: 10rem 0rem 10rem 4rem;
+  padding: 5rem;
 
   position: absolute;
   top: 50%;
-  left: -3.5rem;
+  left: -1.8rem;
   transform: translate(-50%, -50%);
 
   svg {

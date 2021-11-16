@@ -2,6 +2,7 @@ export const CSSVariables = {
   colorPrimary: '--color-primary',
   colorSecondary: '--color-secondary',
 
+  white: '--color--white',
   colorBackground: '--color-background',
   colorBackgroundVariant: '--color-background-variant',
   cardBackground: '--card-background',

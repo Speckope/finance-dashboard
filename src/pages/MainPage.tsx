@@ -5,9 +5,12 @@ import RightSideBar, { RightSideBarWrapper } from 'src/areas/RightSideBar';
 import { cvar } from 'src/theming/cvar';
 import styled from 'styled-components';
 
-interface MainPageProps {}
+interface MainPageProps {
+  setTheme: () => void;
+  theme: boolean;
+}
 
-const MainPage: React.FC<MainPageProps> = () => {
+const MainPage: React.FC<MainPageProps> = ({ setTheme, theme }) => {
   const [isRightBarOpen, setIsRightBarOpen] = useState(false);
 
   return (
@@ -15,6 +18,8 @@ const MainPage: React.FC<MainPageProps> = () => {
       <LeftSideBar />
       <Contents />
       <RightSideBar
+        theme={theme}
+        setTheme={setTheme}
         isRightBarOpen={isRightBarOpen}
         setIsRightBarOpen={() => setIsRightBarOpen(!isRightBarOpen)}
       />

@@ -36,7 +36,10 @@ const StyledLeftSideBar = styled.nav`
   max-height: 100vh;
 
   background-color: ${cvar('colorBackground')};
-  border-right: 1px solid ${cvar('colorBackgroundVariant')};
+  border-right: ${(props) =>
+    props.theme.themeName === 'lightTheme'
+      ? `1px solid ${cvar('colorBackgroundVariant')}`
+      : '1px solid #bdb9b947'};
 
   @media (max-height: 600px) {
     padding-bottom: 1rem;

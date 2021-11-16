@@ -43,8 +43,14 @@ const Wrapper = styled.div`
 
     background-color: inherit;
 
+    color: ${cvar('fontColorPrimary')};
+
     border: none;
     outline: none;
+
+    &::placeholder {
+      color: ${cvar('fontColorPrimary')};
+    }
   }
 
   g {
@@ -66,6 +72,13 @@ const Wrapper = styled.div`
       opacity: 0;
     }
   }
+
+  ${(props) =>
+    props.theme.themeName === 'darkTheme'
+      ? `
+    border: 1px solid ${cvar('borderColor')};
+  `
+      : ''}
 `;
 
 export default SearchBar;

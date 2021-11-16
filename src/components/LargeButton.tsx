@@ -44,7 +44,11 @@ const StyledLargeButton = styled.button<LargeButtonProps>`
   border-radius: ${(props) => props.borderRadius};
 
   background-color: ${(props) => cvar(props.color!)};
-  box-shadow: 0rem 1.5rem 2rem rgba(98, 60, 231, 0.35);
+
+  box-shadow: ${(props) =>
+    props.theme.themeName === 'lightTheme'
+      ? `0rem 1.5rem 2rem rgba(98, 60, 231, 0.35)`
+      : ''};
 
   transition: 0.3s ease;
 

@@ -1,14 +1,21 @@
+import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import MainPage from './pages/MainPage';
 import { GlobalStyles } from './theming/GlobalStyles';
-import { lightTheme } from './theming/themes';
+import { darkTheme, lightTheme } from './theming/themes';
 
 function App() {
+  const [theme, setTheme] = useState(true);
+
+  const changeTheme = () => {
+    setTheme(!theme);
+  };
+
   return (
-    <ThemeProvider theme={lightTheme}>
+    <ThemeProvider theme={theme ? lightTheme : darkTheme}>
       <GlobalStyles />
       <div className='App'>
-        <MainPage />
+        <MainPage setTheme={changeTheme} theme={theme} />
       </div>
     </ThemeProvider>
   );

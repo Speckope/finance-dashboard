@@ -14,16 +14,16 @@ const CreditCard: React.FC<CreditCardProps> = ({}) => {
       {/* TOP */}
       <TopWrapper>
         <StarSVG />
-        <Text color='colorBackground' fontWeight='bold'>
+        <Text color='white' fontWeight='bold'>
           <h4> Platinum </h4>
         </Text>
-        <Text color='colorBackground' fontWeight='bold'>
+        <Text color='white' fontWeight='bold'>
           <h4>Debit</h4>
         </Text>
       </TopWrapper>
       {/* MIDDLE */}
       <Text
-        color='colorBackground'
+        color='white'
         fontWeight='600'
         size='2rem'
         font='fontSecondary'
@@ -39,7 +39,7 @@ const CreditCard: React.FC<CreditCardProps> = ({}) => {
           </Text>
           <Text
             size='1.3rem'
-            color='colorBackground'
+            color='white'
             font='fontSecondary'
             fontWeight='500'
           >
@@ -52,7 +52,7 @@ const CreditCard: React.FC<CreditCardProps> = ({}) => {
           </Text>
           <Text
             size='1.3rem'
-            color='colorBackground'
+            color='white'
             font='fontSecondary'
             fontWeight='500'
           >

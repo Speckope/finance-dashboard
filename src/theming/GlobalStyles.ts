@@ -22,6 +22,7 @@ export const GlobalStyles = styled.createGlobalStyle`
     --color-primary: ${(props) => props.theme.colors.primary};
     --color-secondary: ${(props) => props.theme.colors.secondary};
 
+    --color--white: ${(props) => props.theme.colors.white};
     --color-background: ${(props) => props.theme.colors.background};
     --color-background-variant: ${(props) =>
       props.theme.colors.backgroundVariant};
@@ -39,6 +40,10 @@ export const GlobalStyles = styled.createGlobalStyle`
 
     --font-primary: ${(props) => props.theme.fonts.primary};
     --font-secondary: ${(props) => props.theme.fonts.secondary};
+
+    // For Toggle
+    --color-toggle-light: ${(props) => props.theme.colors.white};
+    --color-toggle-dark: ${(props) => props.theme.colors.primary};
 
     font-size: 62.5%;
 

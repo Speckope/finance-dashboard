@@ -2,12 +2,15 @@ import 'styled-components';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
+    themeName: string;
+
     fonts: {
       primary: string;
       secondary: string;
     };
 
     colors: {
+      white: string;
       primary: string;
       secondary: string;
       background: string;
