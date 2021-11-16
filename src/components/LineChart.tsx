@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { ResponsiveLine, Serie } from '@nivo/line';
 import styled, { ThemeContext } from 'styled-components';
 import { balanceData } from 'src/data/balanceData';
@@ -7,10 +7,15 @@ import { cvar } from 'src/theming/cvar';
 import { Theme } from '@nivo/core';
 import Text from './Text';
 import { Tooltip } from './Tooltipt';
+import { useSize } from 'src/hooks/useSize';
 
 interface LineChartProps {}
 
 const LineChart: React.FC<LineChartProps> = () => {
+  // Get size with observer hook
+  const LCWrappRef = useRef<HTMLDivElement | null>(null);
+  const size = useSize(LCWrappRef);
+
   // Create theme for ResponsiveLine from our SC theme
   const themeContext = useContext(ThemeContext);
   const lineTheme: Theme = {
@@ -23,8 +28,10 @@ const LineChart: React.FC<LineChartProps> = () => {
     },
     textColor: themeContext.fontColors.secondary,
     fontFamily: themeContext.fonts.secondary,
-    fontSize: 13,
+    fontSize: size?.width && size.width > 300 ? 13 : 9,
   };
+
+  console.log(size?.width);
 
   const [formattedData, setFormattedData] = useState<Serie[]>([]);
 
@@ -33,10 +40,10 @@ const LineChart: React.FC<LineChartProps> = () => {
   }, []);
 
   return (
-    <Wrapper>
+    <Wrapper ref={LCWrappRef}>
       <ResponsiveLine
         data={formattedData}
-        margin={{ top: 50, right: 50, bottom: 50, left: 60 }}
+        margin={{ top: 50, right: 50, bottom: 70, left: 60 }}
         xScale={{
           type: 'time',
           // native will read correctly from new Date()
@@ -61,6 +68,8 @@ const LineChart: React.FC<LineChartProps> = () => {
           tickPadding: 15,
           format: '%B %e',
           tickValues: 'every 1 day',
+          // TODO Once width is less than 700.
+          tickRotation: size?.width && size.width > 500 ? 0 : -50,
         }}
         axisLeft={{
           tickSize: 0,
@@ -115,7 +124,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  height: 23rem;
+  height: 28rem;
   min-height: 23rem;
 
   // For some reason it has to stay for chart to have correct font-family
