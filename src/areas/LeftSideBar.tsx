@@ -32,10 +32,15 @@ const StyledLeftSideBar = styled.nav`
   padding-top: 4rem;
 
   width: 8%;
+  min-width: 8rem;
   max-height: 100vh;
 
   background-color: ${cvar('colorBackground')};
   border-right: 1px solid ${cvar('colorBackgroundVariant')};
+
+  @media (max-height: 600px) {
+    padding-bottom: 1rem;
+  }
 `;
 
 const Logo = styled(LogoSvg)`
