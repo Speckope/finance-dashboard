@@ -45,6 +45,19 @@ export const GlobalStyles = styled.createGlobalStyle`
     --color-toggle-light: ${(props) => props.theme.colors.white};
     --color-toggle-dark: ${(props) => props.theme.colors.primary};
 
+    // hsl color-secondary, shadow generated from https://www.joshwcomeau.com/shadow-palette/
+    --shadow-color: 360deg 84% 69%;
+    --shadow-elevation-high: 0px 1px 0.8px hsl(var(--shadow-color) / 0.15),
+      0px 1.1px 0.8px -0.6px hsl(var(--shadow-color) / 0.13),
+      0px 2px 1.5px -1.1px hsl(var(--shadow-color) / 0.12),
+      0px 4.4px 3.3px -1.7px hsl(var(--shadow-color) / 0.1),
+      -0.1px 9px 6.8px -2.2px hsl(var(--shadow-color) / 0.09),
+      -0.1px 16.6px 12.5px -2.8px hsl(var(--shadow-color) / 0.07),
+      -0.2px 28px 21px -3.3px hsl(var(--shadow-color) / 0.06),
+      -0.3px 43.8px 32.9px -3.9px hsl(var(--shadow-color) / 0.04),
+      -0.5px 64.9px 48.7px -4.4px hsl(var(--shadow-color) / 0.03),
+      -0.7px 92px 69px -5px hsl(var(--shadow-color) / 0.01);
+
     font-size: 62.5%;
 
     // tab-landscape

@@ -64,10 +64,12 @@ export const StyledSmallButton = styled.button<SmallButtonProps>`
     .download-arrow {
       animation: ${arrowDown} 1s infinite;
     }
+
     ${(props) =>
       props.clickable
         ? `
       scale: 1.1;
+      -webkit-transform: scale(1.1);
   `
         : ''}
     // Clickable animation
@@ -79,8 +81,9 @@ export const StyledSmallButton = styled.button<SmallButtonProps>`
       ? `
     
     &:active {
-      scale: 0.9;
-      transition: 0.05s ease;
+      scale: 0.95;
+      -webkit-transform: scale(0.95);
+
     }
   `
       : ''}

@@ -57,11 +57,15 @@ const StyledLargeButton = styled.button<LargeButtonProps>`
       ? `
       &:hover {
     scale: 1.1;
+    -webkit-transform: scale(1.1);
+    
     transition: 0.3s ease;
   }
 
   &:active {
     scale: 0.9;
+    -webkit-transform: scale(0.9);
+
     background-color: ${cvar('colorSecondary')};
     transition: 0.1s ease;
   }
