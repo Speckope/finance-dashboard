@@ -43,16 +43,13 @@ export const RightSideBarWrapper = styled.div`
 
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
 
   justify-content: space-between;
 
   background-color: ${cvar('colorBackgroundVariant')};
 
-  padding-top: 4rem;
-  padding-left: 4rem;
-  padding-right: 6rem;
-  padding-bottom: 4rem;
+  padding: 4rem 6rem 4rem 4rem;
 
   transition: 0.3s all ease;
 
@@ -60,6 +57,17 @@ export const RightSideBarWrapper = styled.div`
   // when on smaller screens
   ${StyledSmallButton} {
     z-index: 20;
+  }
+
+  @media (max-width: 350px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 340px;
+  }
+
+  @media (max-height: 700px) {
+    padding-top: 1rem;
+    padding-bottom: 0;
   }
 `;
 
@@ -78,6 +86,8 @@ const CardBarChartWrapper = styled.div`
 const TopIconsWrapper = styled.div`
   display: flex;
   justify-content: right;
+
+  align-self: flex-end;
   gap: 1rem;
 
   ${StyledSmallButton}:last-child {

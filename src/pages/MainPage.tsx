@@ -55,10 +55,10 @@ const Wrapper = styled.div<{
       : `${RightSideBarWrapper} {
             @media (max-width: 1150px) {
             
-              transform: translateX(48rem);
+              transform: translateX(100%);
               transition: 0.3s all ease;
 
-              width: 100vw;
+              width: 100%;
               height: 100vh;
         
               position: absolute;

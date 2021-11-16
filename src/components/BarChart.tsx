@@ -199,6 +199,10 @@ const Wrapper = styled.div`
 
   margin-top: 3rem;
 
+  @media (max-height: 700px) {
+    margin-top: 0;
+  }
+
   width: 35rem;
   min-height: 40rem;
 `;
@@ -238,6 +242,9 @@ const BottomWrapper = styled.div`
   width: 95%;
 
   margin-top: 6rem;
+  @media (max-height: 700px) {
+    margin-top: 1rem;
+  }
 `;
 
 export default BarChart;
