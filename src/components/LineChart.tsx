@@ -31,8 +31,6 @@ const LineChart: React.FC<LineChartProps> = () => {
     fontSize: size?.width && size.width > 300 ? 13 : 9,
   };
 
-  console.log(size?.width);
-
   const [formattedData, setFormattedData] = useState<Serie[]>([]);
 
   useEffect(() => {

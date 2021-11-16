@@ -154,7 +154,7 @@ const ActiveIndicator = styled.div<{
   width: 2.1rem;
 
   top: 0;
-  left: -1.2rem;
+  left: -1.4rem;
   // use translate, not top property to make transition smoother.
   transform: ${(props) => `translateY(${props.positionTop + 'px'})`};
 

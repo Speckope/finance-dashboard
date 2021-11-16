@@ -43,10 +43,7 @@ const BarChart: React.FC<BarChartProps> = () => {
 
     const changeBack = () => {
       target.style.fill = cvar('colorPrimary');
-      console.log('changed');
     };
-
-    console.log(point);
 
     setValues({
       downloads: point.data.downloads,
