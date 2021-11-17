@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import Text from '../components/Text';
 import CardsList from 'src/components/CardsList';
 import { cvar } from 'src/theming/cvar';
@@ -37,6 +36,8 @@ const ContentsWrapper = styled.div`
   flex-direction: column;
 
   max-height: 100vh;
+  // Card Circle div was going out of screen, adding extra space
+  // Can't add hidden overflow on right sidebar bc Toggle would be cut
   overflow-x: hidden;
   overflow-y: visible;
 
@@ -49,11 +50,11 @@ const ContentsWrapper = styled.div`
     padding-right: 1rem;
   }
 
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  scrollbar-width: none; /* Firefox */
-
   background-color: ${cvar('colorBackground')};
 
+  // Styles for invisible scrollbar
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
   // Chrome else works
   &::-webkit-scrollbar {
     display: none; /* Safari and Chrome */

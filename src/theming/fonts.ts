@@ -1,7 +1,6 @@
-// This is not an ideal solutionm but I couldn't get anyuthing else to work.
+// This is not a good solution but I couldn't get anything else to work.
 // What url google privides, it decides on based on browser that makes a request.
 // We loose funcionality, but it at least works.
-// Downloading fonts and making our own font-faces with both woff and woff2 would be better.
 export const fonts = `
 /* cyrillic-ext */
 @font-face {

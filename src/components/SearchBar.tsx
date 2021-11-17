@@ -18,20 +18,19 @@ const SearchBar: React.FC<SearchBarProps> = () => {
 };
 
 const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+
   height: 5rem;
   width: 31rem;
   padding: 1rem;
 
   border-radius: 0.7rem;
 
-  display: flex;
-  align-items: center;
-
   background-color: ${cvar('searchColor')};
 
-  // Change search icon opacity when Search bar is hovered
-  // But filter icon opacity only when it's hovered
-  // Unable to select svgs imported as ReactComponents in styled directly...
+  // Change search icon opacity when Search bar is hovered,
+  // but filter icon's opacity only when filter icon is hovered
   &:hover .search-svg g,
   &:not(.filter-svg) {
     opacity: 1;
@@ -46,7 +45,7 @@ const Wrapper = styled.div`
     color: ${cvar('fontColorPrimary')};
 
     border: none;
-    outline: none;
+    outline: transparent;
 
     &::placeholder {
       color: ${cvar('fontColorPrimary')};
@@ -57,7 +56,7 @@ const Wrapper = styled.div`
     transition: ease 0.3s;
   }
 
-  // Initial animation of svh
+  // Initial animation of svg
   ${pathStyle}
 
   // Position to the left and change opacity when hovered
@@ -73,6 +72,7 @@ const Wrapper = styled.div`
     }
   }
 
+  // Add border when dark theme
   ${(props) =>
     props.theme.themeName === 'darkTheme'
       ? `

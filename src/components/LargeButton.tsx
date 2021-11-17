@@ -38,13 +38,15 @@ const StyledLargeButton = styled.button<LargeButtonProps>`
     cursor: pointer;
   }
 
+  // Don't let it be too smal, but nice.
   min-height: 6.9rem;
-  width: 6.6rem;
   min-width: 6.6rem;
+
   border-radius: ${(props) => props.borderRadius};
 
   background-color: ${(props) => cvar(props.color!)};
 
+  // Remove shadow when dark theme, it looks horrible with it.
   box-shadow: ${(props) =>
     props.theme.themeName === 'lightTheme'
       ? `0rem 1.5rem 2rem rgba(98, 60, 231, 0.35)`
@@ -52,23 +54,24 @@ const StyledLargeButton = styled.button<LargeButtonProps>`
 
   transition: 0.3s ease;
 
+  // Add effects when clickable
   ${(props) =>
     props.clickable
       ? `
       &:hover {
-    scale: 1.1;
-    -webkit-transform: scale(1.1);
-    
-    transition: 0.3s ease;
-  }
+        scale: 1.1;
+        -webkit-transform: scale(1.1);
+        
+        transition: 0.3s ease;
+      }
 
-  &:active {
-    scale: 0.9;
-    -webkit-transform: scale(0.9);
-
-    background-color: ${cvar('colorSecondary')};
-    transition: 0.1s ease;
-  }
+      &:active {
+        scale: 0.9;
+        -webkit-transform: scale(0.9);
+      
+        background-color: ${cvar('colorSecondary')};
+        transition: 0.1s ease;
+      }
   `
       : ''}
 `;

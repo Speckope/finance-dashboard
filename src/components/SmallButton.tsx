@@ -20,7 +20,7 @@ const SmallButton: React.FC<SmallButtonProps> = ({
   );
 };
 
-// Helper for complex mixins in Styled, else it won't compile.
+// Helper for complex mixins in Styled Components, else it won't compile.
 const animationMixin = css<SmallButtonProps>`
   animation: ${border} 0.3s forwards;
 `;
@@ -30,11 +30,12 @@ export const StyledSmallButton = styled.button<SmallButtonProps>`
   justify-content: center;
   align-items: center;
 
-  overflow: hidden;
-
   height: 4.3rem;
   width: 4.3rem;
+
   border-radius: 1.1rem;
+
+  overflow: hidden;
 
   &,
   &:link,
@@ -52,15 +53,9 @@ export const StyledSmallButton = styled.button<SmallButtonProps>`
     0px 8.80049px 7.04039px rgba(41, 72, 152, 0.0196296),
     0px 2.00011px 3.40019px rgba(41, 72, 152, 0.012037);
 
-  ${(props) =>
-    props.clickable
-      ? `
-    
-  `
-      : ''}
   // Hover animations
   &:hover {
-    // For downlaod svg
+    // Subtle animation for download icon nead Recent Transactions
     .download-arrow {
       animation: ${arrowDown} 1s infinite;
     }
@@ -70,7 +65,7 @@ export const StyledSmallButton = styled.button<SmallButtonProps>`
         ? `
       scale: 1.1;
       -webkit-transform: scale(1.1);
-  `
+      `
         : ''}
     // Clickable animation
     ${(props) => (props.clickable ? animationMixin : '')}
@@ -93,7 +88,7 @@ export const StyledSmallButton = styled.button<SmallButtonProps>`
     width: 2rem;
   }
 
-  // It will change it's size when inside TransactionItem
+  // SmallButton will change it's size when inside TransactionItem
   ${TransactionItemWrapper} & {
     width: 5.6rem;
     height: 5.6rem;

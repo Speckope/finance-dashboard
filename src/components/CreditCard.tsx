@@ -7,7 +7,7 @@ import { ReactComponent as VisaSVG } from '../assets/right-sidebar/visa-logo.svg
 
 interface CreditCardProps {}
 
-const CreditCard: React.FC<CreditCardProps> = ({}) => {
+const CreditCard: React.FC<CreditCardProps> = () => {
   return (
     <Wrapper>
       <Circle />
@@ -88,12 +88,11 @@ const Wrapper = styled.div`
     position: absolute;
     // Should be below the parent element
     z-index: -1;
+    top: 1rem;
+    left: 0.5rem;
 
     width: 34rem;
     height: 22rem;
-
-    top: 1rem;
-    left: 0.5rem;
 
     content: '';
     opacity: 0.2;
@@ -107,12 +106,11 @@ const Wrapper = styled.div`
 // Inner circle (full white)
 const Circle = styled.div`
   position: absolute;
+  left: 20rem;
+  top: -6rem;
 
   width: 22rem;
   height: 22rem;
-
-  left: 20rem;
-  top: -6rem;
 
   opacity: 0.1;
   content: '';
@@ -124,13 +122,12 @@ const Circle = styled.div`
   // Outer circle (only border)
   &:before {
     position: absolute;
-
-    width: 29rem;
-    height: 29rem;
-
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    width: 29rem;
+    height: 29rem;
 
     content: '';
 

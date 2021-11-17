@@ -28,6 +28,8 @@ const iconsArr = [
 interface IconsMenuProps {}
 
 const IconsMenu: React.FC<IconsMenuProps> = () => {
+  // State for managing Active Indicator position
+  // -25 to align it to a starting icon.
   const [activePosition, setActivePosition] = useState(-25);
   const [activeId, setActiveId] = useState(iconsArr[0].id);
 
@@ -49,11 +51,9 @@ const IconsMenu: React.FC<IconsMenuProps> = () => {
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     id: string
   ) => {
-    //
     setActiveId(id);
-    //
     setActivePosition(
-      event.currentTarget.offsetTop - event.currentTarget.offsetHeight / 2 - 8
+      event.currentTarget.offsetTop - event.currentTarget.offsetHeight / 2 - 12
     );
   };
 
@@ -61,7 +61,7 @@ const IconsMenu: React.FC<IconsMenuProps> = () => {
     <Wrapper>
       {iconsArr.map((icon) => (
         <IconWrapper
-          // Add active classname if Icon id is selected
+          // Add active className if Icon id is selected
           className={activeId === icon.id ? 'active' : ''}
           key={icon.id}
           onClick={(event) => changeActivePosition(event, icon.id)}
@@ -70,6 +70,7 @@ const IconsMenu: React.FC<IconsMenuProps> = () => {
         </IconWrapper>
       ))}
 
+      {/* Pass selected icon position as props, will be updated using css*/}
       <ActiveIndicator positionTop={activePosition}>
         <ActiveSVG />
       </ActiveIndicator>
@@ -84,12 +85,13 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 0.6rem;
+  // Space when sceen is small vertically
+  gap: 1rem;
 
+  // Needed for ActiveIndicator
   position: relative;
 
-  height: 80%;
-  min-height: 40%;
+  height: 70%;
   // Need to be 100% for proper active indicator placing
   // Else it's buggy when resizing
   width: 100%;
@@ -105,7 +107,6 @@ const Wrapper = styled.div`
 const IconWrapper = styled.button`
   background-color: transparent;
   min-height: 3rem;
-  margin-bottom: 1rem;
 
   &,
   &:link,
@@ -127,7 +128,7 @@ const IconWrapper = styled.button`
     height: 3rem;
 
     :hover {
-      // Animations on g, becaouse one svg didn't work correctly
+      // Animations on g, because one svg didn't work correctly
       // (doubled lines and opacity was wrong)
       g {
         opacity: 0.8;
@@ -138,6 +139,7 @@ const IconWrapper = styled.button`
 
   ${pathStyle}
 
+  // When icon is selected
   &.active {
     g {
       opacity: 0.8;
@@ -155,11 +157,12 @@ const ActiveIndicator = styled.div<{
 
   top: 0;
   left: -1.4rem;
-  // use translate, not top property to make transition smoother.
+  // use translate, not top property to make transition more performant.
   transform: ${(props) => `translateY(${props.positionTop + 'px'})`};
 
   transition: 0.2s ease;
 
+  // Svg inside will give subtle shadow with this filter
   filter: drop-shadow(25px 0px 96px rgba(255, 47, 94, 0.12))
     drop-shadow(5px 0px 15.6px rgba(255, 47, 94, 0.24));
 `;

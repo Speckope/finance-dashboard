@@ -32,7 +32,7 @@ const RightSideBar: React.FC<RightSideBarProps> = ({
           <NotificationsSVG />
         </SmallButton>
         <SmallButton clickable>
-          <img src={ori} alt='dog' />
+          <img src={ori} alt='cute german shepherd' />
         </SmallButton>
       </TopIconsWrapper>
       <CardBarChartWrapper>
@@ -50,13 +50,12 @@ export const RightSideBarWrapper = styled.div`
   width: 33%;
   max-width: 48rem;
 
-  position: relative;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
   justify-content: space-between;
+
+  position: relative;
 
   background-color: ${cvar('colorBackgroundVariant')};
 
@@ -65,7 +64,7 @@ export const RightSideBarWrapper = styled.div`
   transition: 0.3s all ease;
 
   // Invisible circle from card was over top buttons
-  // when on smaller screens
+  // when on smaller screens and it covered buttons.
   ${StyledSmallButton} {
     z-index: 20;
   }
@@ -73,7 +72,6 @@ export const RightSideBarWrapper = styled.div`
   @media (max-width: 350px) {
     padding-left: 1rem;
     padding-right: 1rem;
-    width: 340px;
   }
 
   @media (max-height: 700px) {
@@ -85,22 +83,21 @@ export const RightSideBarWrapper = styled.div`
 const CardBarChartWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 
   min-height: 87%;
 
   margin-top: 2rem;
-
-  justify-content: space-between;
-  align-items: center;
 `;
 
 const TopIconsWrapper = styled.div`
   display: flex;
   justify-content: right;
-  width: 98%;
-
   align-self: flex-end;
   gap: 1rem;
+
+  width: 98%;
 
   ${StyledSmallButton}:last-child {
     margin-left: 3rem;
@@ -115,24 +112,29 @@ const TopIconsWrapper = styled.div`
 
 const Toggle = styled.div`
   display: none;
+
   height: 9rem;
   width: 2.1rem;
 
+  // Always should be on top for toggling
+  z-index: 100;
+
   padding: 5rem;
 
+  // Position in the middle of the right bar left edge.
   position: absolute;
   top: 50%;
   left: -1.8rem;
   transform: translate(-50%, -50%);
 
+  // Rotate, bc it svg itself was in the wrong direction for this use.
   svg {
     transform: rotateY(180deg) translateY(-50%);
   }
 
+  // Display only when colapsing right sidebar
   @media (max-width: 1150px) {
     display: block;
-    height: 9rem;
-    width: 2.1rem;
   }
 `;
 

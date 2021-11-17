@@ -27,6 +27,7 @@ const Wrapper = styled.div`
 
   cursor: pointer;
 
+  // Change shadow for dark theme for more of a highlight in secondary color.
   &:hover {
     box-shadow: ${(props) =>
       props.theme.themeName === 'lightTheme'

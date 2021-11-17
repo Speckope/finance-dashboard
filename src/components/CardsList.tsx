@@ -56,10 +56,9 @@ export default CardsList;
 const Wrapper = styled.div`
   display: flex;
   align-self: center;
+  justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
-
-  justify-content: space-between;
 
   padding-bottom: 6rem;
 

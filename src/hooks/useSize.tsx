@@ -1,3 +1,4 @@
+// Returnig DOMRect object of passed element's ref
 import * as React from 'react';
 import useResizeObserver from '@react-hook/resize-observer';
 

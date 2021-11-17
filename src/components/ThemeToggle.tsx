@@ -1,5 +1,5 @@
 // https://github.com/gomorizsolt/react-theme-toggle-button by gomorizsolt
-// rewritten for TS and Styled Components
+// rewritten for TS and Styled Components by me
 
 import styled from 'styled-components';
 

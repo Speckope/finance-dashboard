@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Transaction, transactionsData } from 'src/data/transactionsData';
 import { cvar } from 'src/theming/cvar';
+import { formatDateDMY } from 'src/utils/formatDate';
 import styled from 'styled-components';
 import Text from './Text';
 import TransactionItem from './TransactionItem';
-
-// Function to display date in "Day Month, Year" format
-const formatDate = (date: Date) => {
-  const dateArray = date.toDateString().split(' ');
-  return `${dateArray[2]} ${dateArray[1]}, ${dateArray[3]}`;
-};
 
 // Get dates, so we know what day is today
 const todayDate = new Date();
@@ -59,7 +54,7 @@ const TransactionList: React.FC<TransactionListProps> = () => {
           <LineDateWrapper>
             <Text uppercase color='fontColorSecondary'>
               <h4>
-                {day}|{formatDate(date)}
+                {day}|{formatDateDMY(date)}
               </h4>
             </Text>
             <Line />

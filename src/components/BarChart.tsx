@@ -11,10 +11,12 @@ import SmallButton from './SmallButton';
 import LargeButton from './LargeButton';
 import { Tooltip } from './Tooltipt';
 import { formatBarData } from 'src/utils/formatBarData';
+import { formatDateDM } from 'src/utils/formatDate';
 
 interface BarChartProps {}
 
 const BarChart: React.FC<BarChartProps> = () => {
+  // Values for Downloads and Uploads at the bottom of the component
   const [values, setValues] = useState<{
     uploads: number;
     downloads: number;
@@ -23,12 +25,10 @@ const BarChart: React.FC<BarChartProps> = () => {
     downloads: barChartData[0].downloads,
   });
 
+  // Get bar Wrapper ref to attach event listener on it
   const barWrapperRef = useRef<HTMLDivElement | null>(null);
 
-  // Click on Bar
-  // TODO Event listeners just get stacked and not removed
-  // It happends bc of a new function being created on each click, but I don't
-  // know how to solve it.
+  // Click on bar function
   const barClick: (
     datum: ComputedDatum<{
       date: string;
@@ -39,23 +39,26 @@ const BarChart: React.FC<BarChartProps> = () => {
     },
     event: React.MouseEvent<Element>
   ) => void = (point, event) => {
+    // Target is single bar inside the chart
     var target = event.target as SVGRectElement;
 
+    // Function to change back bar color
     const changeBack = () => {
       target.style.fill = cvar('colorPrimary');
     };
 
+    // Get values of  clicked bar
     setValues({
       downloads: point.data.downloads,
       uploads: point.data.uploads,
     });
 
+    // Change bar color
     target.style.fill = cvar('colorSecondary');
 
-    // When you click outside of a bar or second time on it,
-    // Change the color back!
-    barWrapperRef.current?.addEventListener('click', changeBack, {
-      // This will remove listener after it's invoked!
+    // Click outside of the bar but inside chart changes color.
+    barWrapperRef.current!.addEventListener('click', changeBack, {
+      // This will remove event listener after it's invoked.
       once: true,
     });
   };
@@ -73,7 +76,10 @@ const BarChart: React.FC<BarChartProps> = () => {
             </h3>
           </Text>
           <Text color='fontColorSecondary' fontWeight='500'>
-            <h4>From 12 Dec - 18 Dec</h4>
+            {/* display from first date to the last */}
+            <h4>{`From ${formatDateDM(barChartData[0].date)}  - ${formatDateDM(
+              barChartData[barChartData.length - 1].date
+            )}`}</h4>
           </Text>
         </VerticalTextWrapper>
         <SmallButton clickable>
@@ -117,6 +123,7 @@ const BarChart: React.FC<BarChartProps> = () => {
                     textAnchor={textAnchor}
                     transform={`translate(${textX},${textY})`}
                   >
+                    {/* value is a string like '12 Dec' */}
                     <tspan x='0' dy='1.2em'>
                       {value.split(' ')[0]}
                     </tspan>
@@ -145,7 +152,7 @@ const BarChart: React.FC<BarChartProps> = () => {
           axisLeft={null}
           labelSkipWidth={12}
           labelSkipHeight={12}
-          // I don't know what this is
+          // I don't know what this is, but leave it.
           role='application'
           // Accessibility
           ariaLabel='Chart showing number of downloads each day'
@@ -194,14 +201,14 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 
+  width: 35rem;
+  min-height: 40rem;
+
   margin-top: 3rem;
 
   @media (max-height: 700px) {
     margin-top: 0;
   }
-
-  width: 35rem;
-  min-height: 40rem;
 `;
 
 const TopWrapper = styled.div`
@@ -213,7 +220,7 @@ const TopWrapper = styled.div`
 `;
 
 // Responsive bar should have its own wrapper,
-// else it's behaviour can be unexpected
+// else it's behaviour can be unexpected.
 const BarChartWrapper = styled.div`
   width: 100%;
   height: 20rem;

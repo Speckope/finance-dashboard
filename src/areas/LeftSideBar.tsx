@@ -36,6 +36,7 @@ const StyledLeftSideBar = styled.nav`
   max-height: 100vh;
 
   background-color: ${cvar('colorBackground')};
+  // Change border to light grey when it's dark theme
   border-right: ${(props) =>
     props.theme.themeName === 'lightTheme'
       ? `1px solid ${cvar('colorBackgroundVariant')}`

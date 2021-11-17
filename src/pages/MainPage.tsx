@@ -32,15 +32,16 @@ export default MainPage;
 const Wrapper = styled.div<{
   isRightBarOpen: boolean;
 }>`
+  display: flex;
+
   min-height: 100vh;
   background-color: ${cvar('colorBackground')};
 
   position: relative;
 
-  display: flex;
-
   overflow-x: hidden;
 
+  // Collapsing RightSidebar
   ${(props) =>
     props.isRightBarOpen
       ? `

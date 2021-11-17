@@ -12,8 +12,9 @@ import { useSize } from 'src/hooks/useSize';
 interface LineChartProps {}
 
 const LineChart: React.FC<LineChartProps> = () => {
-  // Get size with observer hook
+  // Ref for element we want to watch size
   const LCWrappRef = useRef<HTMLDivElement | null>(null);
+  // Get size with observer hook
   const size = useSize(LCWrappRef);
 
   // Create theme for ResponsiveLine from our SC theme
@@ -28,9 +29,13 @@ const LineChart: React.FC<LineChartProps> = () => {
     },
     textColor: themeContext.fontColors.secondary,
     fontFamily: themeContext.fonts.secondary,
-    fontSize: size?.width && size.width > 300 ? 13 : 9,
+    // If it exists(else TypeError) and width is greater smaller than 300
+    // make font smaller
+    fontSize: size?.width && size.width < 300 ? 9 : 13,
   };
 
+  // In case of future switching to other data displaying on the chart,
+  // use state for it.
   const [formattedData, setFormattedData] = useState<Serie[]>([]);
 
   useEffect(() => {
@@ -45,10 +50,11 @@ const LineChart: React.FC<LineChartProps> = () => {
         xScale={{
           type: 'time',
           // native will read correctly from new Date()
-          // No need to format with custom d3 values.
+          // no need to format with custom d3 values.
           format: 'native',
           // We're not using UTC
           useUTC: false,
+          // What time period is on ticks
           precision: 'day',
         }}
         yScale={{
@@ -66,13 +72,13 @@ const LineChart: React.FC<LineChartProps> = () => {
           tickPadding: 15,
           format: '%B %e',
           tickValues: 'every 1 day',
-          // TODO Once width is less than 700.
-          tickRotation: size?.width && size.width > 500 ? 0 : -50,
+          // Once wrapper width is less than 500, rotate ticks for readability
+          tickRotation: size?.width && size.width < 500 ? -50 : 0,
         }}
         axisLeft={{
           tickSize: 0,
           tickPadding: 30,
-          // Tick Values define how many values will be rendered on yAxis.
+          // Tick Values define how many ticks will be rendered on yAxis.
           // (not counting minumin Value)
           // Will render different number sometimes to accomodate to data.
           // It should usually render around +-2K on yAxis (with mock data)
@@ -122,14 +128,13 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 
+  width: 100%;
   height: 28rem;
   min-height: 23rem;
 
   // For some reason it has to stay for chart to have correct font-family
-  // Defining font'family here and on lineTheme font-family is neccesary.
+  // Defining font family both here and on lineTheme font-family is necessary.
   font-family: ${cvar('fontSecondary')};
-
-  width: 100%;
 `;
 
 export default LineChart;
