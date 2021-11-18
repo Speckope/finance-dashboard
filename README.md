@@ -1,12 +1,15 @@
+# Finance Dashboard
 Finance dashboard frontend implementation in React, Typescript, Styled-Components, Nivo.
 
-Fully responsive website down to mobile screens.
+## Features
 
-Clean code with reusable components and clear comments.
+* Fully responsive website down to mobile screens.
 
-Data visualization done using Nivo and real data, ready for pulling data from the backend and working as intended.
+* Clean code with reusable components and clear comments.
 
-Beautiful light and dark theme with seamless transition between them, using CSS variables.
+* Data visualization done using Nivo and real data, ready for pulling data from the backend and working as intended.
+
+* Beautiful light and dark theme with seamless transition between them, using CSS variables.
 
 Code implementation by Szymon Kucharski(speckope).
 Design by AR Shakir.
