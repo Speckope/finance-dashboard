@@ -29,7 +29,7 @@ const LineChart: React.FC<LineChartProps> = () => {
     },
     textColor: themeContext.fontColors.secondary,
     fontFamily: themeContext.fonts.secondary,
-    // If it exists(else TypeError) and width is greater smaller than 300
+    // If width exists(else TypeError) and width(Line Chart Wrapper) is smaller than 300
     // make font smaller
     fontSize: size?.width && size.width < 300 ? 9 : 13,
   };
