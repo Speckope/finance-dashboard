@@ -10,6 +10,3 @@ Finance dashboard frontend implementation in React, Typescript, Styled-Component
 * Data visualization done using Nivo and real data, ready for pulling data from the backend and working as intended.
 
 * Beautiful light and dark theme with seamless transition between them, using CSS variables.
-
-Code implementation by Szymon Kucharski(speckope).
-Design by AR Shakir.
